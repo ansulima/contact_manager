@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :contacts
+ 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   get 'sobre', to: 'static_pages#sobre'
   get 'contato', to: 'static_pages#contato'
 
+
+  resources :contacts
+  resources :users , only: [:new, :create]
 end
