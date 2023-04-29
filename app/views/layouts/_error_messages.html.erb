@@ -1,7 +1,7 @@
 <% if object.errors.any? %>
     <div class="">
         <div class="alert alert-danger">
-            Ops! Encontramos um erro!   
+            Ops! Encontramos <%= pluralize(@user.errors.count, "erro") %>!   
             <ul>
             <% object.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
