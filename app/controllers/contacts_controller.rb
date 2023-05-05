@@ -1,10 +1,15 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: %i[ show edit update destroy ]
+  before_action :require_logged_in_user
+
+  def index
+    @contacts = current_user.contacts
+  end
 
   # GET /contacts or /contacts.json
-  def index
-    @contacts = Contact.all
-  end
+  #def index
+    #@contacts = Contact.all
+  #end
 
   # GET /contacts/1 or /contacts/1.json
   def show
@@ -22,6 +27,7 @@ class ContactsController < ApplicationController
   # POST /contacts or /contacts.json
   def create
     @contact = Contact.new(contact_params)
+    @contact.user = current_user
 
     respond_to do |format|
       if @contact.save
