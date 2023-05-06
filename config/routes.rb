@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'entrar', to: 'sessions#new'
   post 'entrar', to: 'sessions#create'
   get 'sair', to: 'sessions#sair'
+
   resources :sessions do 
     collection do
       get :sair
@@ -17,7 +18,7 @@ Rails.application.routes.draw do
 
 
   resources :contacts
-  resources :users, only: [:new, :create, :show]
+  resources :users, only: [:new, :create, :show, :edit, :update]
  
 
   resources :users do
